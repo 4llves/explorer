@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Staatliches&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <title>Avalie sua mentoria</title>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1>
+          Avalie a sua mentoria
+        </h1>
+        <p>
+          Chegou a hora de avaliar o seu mentor. Bora lá?
+        </p>
+        <img src="../img/img1.svg" alt="imagem ilustrativa avaliação 1 a 5 estrelas">
+      </div>
+    </header>
+
+    <div id="top-form">
+      <h2>Informações Pessoais</h2>
+    </div>
+
+    <form id="my-form-avaliacao">
+      <fieldset>
+        <div class="fieldset-wrapper">
+          <div class="col-2">
+            <div class="input-wrapper">
+              <label for="name">Nome</label>
+              <input type="text" id="name" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="name">Sobrenome</label>
+              <input type="text" id="last-name" />
+            </div>
+          </div>
+
+          <div class="input-wrapper">
+            <label for="email">Email <span>(digite um email válido)</span></label>
+            <input type="email" id="email" />
+          </div>
+
+          <div class="input-wrapper">
+            <label for="password">Senha <span>(mínimo de 6 caracteres)</span></label>
+            <input type="password" id="password" required minlength="6" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Informações do Mentor</legend>
+
+        <div class="input-wrapper">
+          <label name="name-tutor" for="name-tutor">Selecione quem foi o mentor</label>
+          <select type="text" id="name-tutor">
+            <option value="maykbrito" selected>Mayk Brito</option>
+            <option value="diegofernandes">Diego Fernandes</option>
+            <option value="rodrigogonçalves ">Rodrigo Gonçalves</option>
+            <option value="jakelinygracielly">Jakeliny Gracielly</option>
+            <option value="danieleleao">Daniele Leão</option>
+          </select>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="feedback-tutor">Feedback sobre o mentor</label>
+          <textarea id="feedback-tutor"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="checkbox-wrapper">
+        <input type="checkbox" id="clarified-doubts" />
+        <label for="clarified-doubts">Todas as minhas dúvidas foram esclarecidas durante a mentoria</label>
+      </div>
+
+      <fieldset>
+        <legend>Agendando próxima mentoria</legend>
+
+        <div class="col-3">
+          <div class="input-wrapper">
+            <label for="first-mentoring">Data <span>(DD/MM/AAAA)</span></label>
+            <input type="date" id="first-mentoring" />
+          </div>
+
+          <div class="input-wrapper">
+            <label for="start-hours">Das</label>
+            <input type="time" id="start-hours" />
+          </div>
+
+          <div class="input-wrapper">
+            <label for="end-hours">Até</label>
+            <input type="time" id="end-hours" />
+          </div>
+        </div>
+      </fieldset>
+
+      <button class="button" type="submit">
+        Salvar
+      </button>
+    </form>
+  </div>
+
+</body>
+
+</html>
