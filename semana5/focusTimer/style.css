@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+body {
+  background: #E5E5E5;
+}
+
+.hide {  
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+main {  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 196px 233px;
+  gap: 192px;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+  margin-top: 58px;
+}
+
+#timer span {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 126.166px;
+  line-height: 148px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #323238;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.ph-play-circle,
+.ph-pause-circle,
+.ph-stop-circle,
+.ph-plus-circle,
+.ph-minus-circle {
+  font-size: 48px;
+}
+
+#songs {  
+  display: grid;  
+  grid-template-columns: repeat(2, auto);  
+  gap: 32px;  
+}
+
+#songs button {
+  width: 138px;
+  height: 152px;
+  background: #878787;
+  border-radius: 24px;
+}
+
+#songs .active {
+  background: #02799D;
+}
+
+.ph-tree,
+.ph-cloud-snow,
+.ph-storefront,
+.ph-flame {
+  font-size: 56px;
+  color: #e5e5e5;
+}
