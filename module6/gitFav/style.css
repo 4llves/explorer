@@ -118,7 +118,7 @@ header {
   border-radius: .4rem;
   overflow: hidden;
   overflow-y: auto;
-  max-height: 68.8rem;  
+  max-height: 48.8rem;
 }
 
 .container-table::-webkit-scrollbar {
@@ -141,7 +141,7 @@ header {
   align-items: center;
   justify-content: center;  
   gap: 6rem;
-  margin: 21rem auto;  
+  margin: 14rem auto;  
 }
 
 #no-favorites img {
