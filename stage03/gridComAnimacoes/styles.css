@@ -224,7 +224,8 @@ p {
   main {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    grid-template-areas: "B C C"
+    grid-template-areas: 
+      "B C C"
       "D C C"
       "E E E"
     ;
