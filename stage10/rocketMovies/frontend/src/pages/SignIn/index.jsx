@@ -1,13 +1,24 @@
+import { useState } from 'react';
 import { Input } from "../../components/Input";
 import { Background, ButtonCreateAccount, ButtonSignIn, Container, Form } from "./styles";
 
+import { useAuth } from '../../hooks/auth';
+
 import { FiMail } from "react-icons/fi"
 import { RiLockPasswordLine } from "react-icons/ri"
-import { Button } from "../../components/Button";
-import { ButtonText } from "../../components/ButtonText";
 
 
 export function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { signIn } = useAuth();
+
+  function handleSignIn() {
+    //console.log(email, password);
+    signIn({ email, password });
+  }
+
   return (
     <Container>
       <Form>
@@ -20,18 +31,23 @@ export function SignIn() {
           placeholder="E-mail"
           type="text"
           icon={FiMail}
+          onChange={e => setEmail(e.target.value)}
         />
 
         <Input
           placeholder="Senha"
           type="password"
           icon={RiLockPasswordLine}
+          onChange={e => setPassword(e.target.value)}
         />
 
-        <ButtonSignIn title="Entrar" />
+        <ButtonSignIn
+          title="Entrar"
+          onClick={handleSignIn}
+        />
 
         <ButtonCreateAccount
-          to="/signup"
+          to="/register"
           title="Criar conta"
         />
       </Form>

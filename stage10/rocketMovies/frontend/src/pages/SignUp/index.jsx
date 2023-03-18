@@ -42,7 +42,7 @@ export function SignUp() {
         />
 
         <ButtonBackLogin
-          to="/signin"
+          to="/"
           icon={AiOutlineArrowLeft}
           title="Voltar para o login"
         />
