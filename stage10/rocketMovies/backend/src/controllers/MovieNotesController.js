@@ -8,12 +8,12 @@ class MovieNotesController {
 
     //console.log(rating)
 
-    // Não esquecer de travar o limite da nota entre 1 e 5
+    //Não esquecer de travar o limite da nota entre 1 e 5
     if (rating <= 0 || rating >= 6) {
       throw new AppError('Digite um numero entre 1 e 5.')
     }
 
-    const note_id = await knex("movie_notes").insert({
+    const [note_id] = await knex("movie_notes").insert({
       title,
       description,
       rating,
