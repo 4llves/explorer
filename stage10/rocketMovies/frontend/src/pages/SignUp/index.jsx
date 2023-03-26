@@ -1,16 +1,43 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Input } from "../../components/Input";
-import { Background, Container, Form, ButtonSignIn, ButtonBackLogin } from "./styles";
 
-
+import { RiLockPasswordLine } from "react-icons/ri"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import { RxPerson } from "react-icons/rx"
 import { FiMail } from "react-icons/fi"
-import { RiLockPasswordLine } from "react-icons/ri"
-import { Button } from "../../components/Button";
-import { ButtonText } from "../../components/ButtonText";
 
+import { Background, Container, Form, ButtonSignIn, ButtonBackLogin } from "./styles";
+
+import { api } from "../../services/api";
 
 export function SignUp() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+
+  function handleSignUp() {
+    if (!name || !email || !password) {
+      return alert("Preencha todos os campos!");
+    }
+
+    api.post("/users", { name, email, password })
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/");
+      })
+      .catch(error => {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Não foi possivel cadastrar");
+        }
+      });
+  }
+
   return (
     <Container>
       <Form>
@@ -23,28 +50,32 @@ export function SignUp() {
           placeholder="Nome"
           type="text"
           icon={RxPerson}
+          onChange={e => setName(e.target.value)}
         />
 
         <Input
           placeholder="E-mail"
           type="text"
           icon={FiMail}
+          onChange={e => setEmail(e.target.value)}
         />
 
         <Input
           placeholder="Senha"
           type="password"
           icon={RiLockPasswordLine}
+          onChange={e => setPassword(e.target.value)}
         />
 
         <ButtonSignIn
           title="Cadastrar"
+          onClick={handleSignUp}
         />
 
         <ButtonBackLogin
-          to="/"
           icon={AiOutlineArrowLeft}
           title="Voltar para o login"
+          to="/"
         />
       </Form>
 

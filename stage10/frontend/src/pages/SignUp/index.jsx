@@ -17,7 +17,7 @@ export function SignUp() {
   const navigate = useNavigate();
 
   function handleSignUp() {
-    if (!name || !email || !setName) {
+    if (!name || !email || !password) {
       return alert('Preencha todos os campos!');
     };
 

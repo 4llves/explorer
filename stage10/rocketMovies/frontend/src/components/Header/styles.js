@@ -39,6 +39,7 @@ export const Profile = styled.div`
     width: 125px;
     
     strong {
+      text-align: right;
       font-weight: 700;
       font-size: 14px;
       line-height: 18px;

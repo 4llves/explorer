@@ -7,9 +7,13 @@ import { useNavigate } from 'react-router-dom'
 
 import { api } from '../../services/api';
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+
 export function Header() {
   const { signOut, user } = useAuth();
   const navigate = useNavigate();
+
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder //condiconal para aparecer a imagem ou um placeholder
 
   function handleSignOut() {
     navigate("/");
@@ -36,7 +40,7 @@ export function Header() {
         </div>
 
         <Link to="/profile">
-          <img src="http://github.com/4llves.png" alt="Foto do usuário" />
+          <img src={avatarUrl} alt="Foto do usuário" />
         </Link>
       </Profile>
     </Container>

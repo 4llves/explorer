@@ -34,9 +34,8 @@ function AuthProvider({ children }) {
     setData({});
   }
 
-  async function uptdateProfile({ user, avatarFile }) {
+  async function updateProfile({ user, avatarFile }) {
     try {
-
       if (avatarFile) {
         const fileUploadForm = new FormData();
 
@@ -51,7 +50,10 @@ function AuthProvider({ children }) {
 
       localStorage.setItem("@rocketmovies:user", JSON.stringify(user));
 
-      setData({ user, token: data.token });
+      setData({
+        user,
+        token: data.token
+      });
 
       alert("Perfil atualizado");
 
@@ -65,8 +67,8 @@ function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('@rocketmovies:token');
     const user = localStorage.getItem('@rocketmovies:user');
+    const token = localStorage.getItem('@rocketmovies:token');
 
     if (token && user) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -83,7 +85,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider value={{
       signIn,
       signOut,
-      uptdateProfile,
+      updateProfile,
       user: data.user
     }}>
       {children}
