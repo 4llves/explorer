@@ -9,7 +9,7 @@ import { api } from '../../services/api';
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
-export function Header() {
+export function Header({ onChange = () => { } }) {
   const { signOut, user } = useAuth();
   const navigate = useNavigate();
 
@@ -28,6 +28,7 @@ export function Header() {
         icon={FiSearch}
         type="search"
         placeholder="Pesquisar pelo título"
+        onChange={(e) => onChange(e)}
       />
 
       <Profile>

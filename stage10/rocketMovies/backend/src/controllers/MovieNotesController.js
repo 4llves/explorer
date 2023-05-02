@@ -1,11 +1,6 @@
 const knex = require('../database/knex');
 const AppError = require('../utils/AppError');
 
-const mediumTime = new Intl.DateTimeFormat("en", {
-  timeStyle: "medium",
-  dateStyle: "short",
-});
-
 class MovieNotesController {
   async create(req, res) {
     const { title, description, rating, tag_name } = req.body
@@ -23,11 +18,15 @@ class MovieNotesController {
       user_id
     })
 
-    await knex("movie_tags").insert({
-      note_id,
-      user_id,
-      tag_name
+    const tagsInsert = tag_name.map(name => {
+      return {
+        note_id,
+        tag_name: name,
+        user_id
+      }
     })
+
+    await knex("movie_tags").insert(tagsInsert)
 
     res.json()
   }

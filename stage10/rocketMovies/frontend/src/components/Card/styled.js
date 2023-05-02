@@ -45,9 +45,14 @@ export const Container = styled.div`
     line-height: 19px;
     color: ${({ theme }) => theme.COLORS.TEXT_CARD};    
   }
+
+  footer {
+    display: flex;
+    gap: .5rem;
+  }
 `
 
 export const TagCard = styled(Tag)`
   margin-top: 15px;
-  margin-right: 8px;
+  margin-right: 8px;  
 `

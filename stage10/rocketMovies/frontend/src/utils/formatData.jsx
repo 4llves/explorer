@@ -3,6 +3,8 @@ import React from 'react';
 export function FormatData(props) {
   const date = new Date(props.data);
 
+  // const test = new Intl.DateTimeFormat('pt-BR').format(date);
+
   const day = new Intl.DateTimeFormat('pt-BR', {
     day: '2-digit'
   }).format(date);
@@ -18,7 +20,6 @@ export function FormatData(props) {
   const hour = new Intl.DateTimeFormat('pt-BR', {
     hour: '2-digit',
     minute: '2-digit'
-
   }).format(date);
 
   return <div>{`${day}/${month}/${year} às ${hour}`}</div>;

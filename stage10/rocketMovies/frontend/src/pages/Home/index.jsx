@@ -12,10 +12,14 @@ import { api } from "../../services/api";
 export function Home() {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
-  const [tags, setTags] = useState([]);
 
   const navigate = useNavigate();
 
+  function handleOnChange(e) {
+    if (window.location.pathname === "/") {
+      setSearch(e.target.value);
+    }
+  }
 
   //Carregar os movies 
   useEffect(() => {
@@ -35,7 +39,9 @@ export function Home() {
 
   return (
     <Container>
-      <Header to="/" />
+      <Header to="/"
+        onChange={handleOnChange}
+      />
 
       <Top>
         <div>

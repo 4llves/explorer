@@ -27,9 +27,9 @@ export function Card({ data, rate, ...rest }) {
       {
         data.tag_name &&
         <footer>
-          {data.tag_name.map((tag, i) =>
+          {data.tag_name.map(tag =>
             <TagCard
-              key={String(i)}
+              key={tag.tag_name}
               title={tag.tag_name}
             />
           )}

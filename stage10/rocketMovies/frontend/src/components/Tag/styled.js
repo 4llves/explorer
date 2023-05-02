@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.span`
+export const Container = styled.span` 
   
+  padding: 5px 16px;   
   
-  padding: 5px 16px;  
   
   border-radius: 8px;
   
