@@ -1,10 +1,8 @@
 import { Container } from "./styled";
 
-export function Tag({ title, ...rest }) {
+export function Tag({ title }) {
   return (
-    <Container
-      {...rest}
-    >
+    <Container>
       {title}
     </Container>
   )

@@ -5,7 +5,7 @@ class MovieTagsController {
     const user_id = req.user.id;
 
     const movieTags = await knex("movie_tags")
-      .where({ user_id }) //onde o user_id for igual à
+      .where({ user_id }) //onde o user_id for igual à      
 
     return res.json(movieTags);
   }

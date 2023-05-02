@@ -1,35 +1,36 @@
 import { Container, TagCard } from "./styled";
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
-import { Link } from "react-router-dom";
+import { Rating } from "../Rating"
 
-const stars = [true, true, true, true, false]
+// const stars = [true, true, true, true, false]
 
-export function Card({ data }) {
+export function Card({ data, rate, ...rest }) {
+  // const stars = []
+
   return (
-    <Container>
+    <Container {...rest}>
       <div className="title">
-        <Link to="/moviepreview">
-          <h1>{data.title}</h1>
-        </Link>
+        <h1>{data.title}</h1>
 
         <div className="stars">
-          {stars.map((star, i) => (
+          {/* {stars.map((star, i) => (
             <div key={i}>
               {star ? <AiFillStar /> : <AiOutlineStar />}
             </div>
-          ))}
+          ))} */}
+          <Rating rate={data.rating} />
         </div>
       </div>
 
-      <p>{data.text}</p>
+      <p>{data.description}</p>
 
       {
-        data.tags &&
+        data.tag_name &&
         <footer>
-          {data.tags.map(tag =>
+          {data.tag_name.map((tag, i) =>
             <TagCard
-              key={tag.name}
-              title={tag.name}
+              key={String(i)}
+              title={tag.tag_name}
             />
           )}
         </footer>

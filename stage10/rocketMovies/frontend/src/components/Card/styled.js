@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Tag } from "../Tag";
 
 export const Container = styled.div`
+  cursor: pointer;
   
   & + & {
     margin-top: 24px;

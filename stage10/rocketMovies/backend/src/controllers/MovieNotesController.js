@@ -1,12 +1,15 @@
 const knex = require('../database/knex');
 const AppError = require('../utils/AppError');
 
+const mediumTime = new Intl.DateTimeFormat("en", {
+  timeStyle: "medium",
+  dateStyle: "short",
+});
+
 class MovieNotesController {
   async create(req, res) {
     const { title, description, rating, tag_name } = req.body
-    const { user_id } = req.params
-
-    //console.log(rating)
+    const user_id = req.user.id
 
     //Não esquecer de travar o limite da nota entre 1 e 5
     if (rating <= 0 || rating >= 6) {
@@ -31,15 +34,16 @@ class MovieNotesController {
 
   async show(req, res) {
     const { id } = req.params
+    const user_id = req.user.id
 
-    const users = await knex("users").where({ id }).first()
-    const movie_notes = await knex("movie_notes").where({ user_id: id })
-    const movie_tags = await knex("movie_tags").where({ user_id: id })
+    const movie_notes = await knex("movie_notes").where({ id }).first()
+    const movie_tags = await knex("movie_tags").where({ note_id: id })
+    const users = await knex("users").where({ id: user_id }).first()
 
     return res.json({
-      ...users,
-      movie_notes,
-      movie_tags
+      user: users,
+      movie: movie_notes,
+      tags: movie_tags
     })
   }
 
@@ -52,7 +56,8 @@ class MovieNotesController {
   }
 
   async index(req, res) {
-    const { user_id, title, tag_name } = req.query
+    const { title, tag_name } = req.query
+    const user_id = req.user.id
 
     let notes;
 
@@ -88,7 +93,7 @@ class MovieNotesController {
       }
     })
 
-    return res.json({ notesWithTags })
+    return res.json(notesWithTags)
   }
 
 }

@@ -9,6 +9,10 @@ import { Textarea } from "../../components/Textarea";
 import { Markes } from "../../components/Markes";
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
+import { api } from '../../services/api'
+
 export function CreateMovie() {
   const [title, setTitle] = useState("");
   const [rating, setRating] = useState(0);
@@ -16,6 +20,12 @@ export function CreateMovie() {
 
   const [marks, setMarks] = useState([]);
   const [newMark, setNewMark] = useState("");
+
+  const navigate = useNavigate();
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   function handleAddMarkes() {
     //Impedir marcadores duplicados
@@ -31,15 +41,40 @@ export function CreateMovie() {
     setMarks(prevState => prevState.filter(mark => mark !== deleted));
   }
 
+  async function handleNewMovie() {
+    if (!title) {
+      return alert("Mermão, tem que ter titulo mano. Digita um ai pra nós.")
+    }
+
+    if (!rating) {
+      return alert("Avalia esse trem ai pra nós. Sem avaliação num vai pra frente.")
+    }
+
+    if (!observation) {
+      return alert("Essa observação é obrigatória. Afinal de contas... como vou saber algo sobre o filme sem uma observação ou descrição?!")
+    }
+
+    await api.post("/notes", {
+      title,
+      description: observation,
+      rating,
+      tag_name: marks
+    });
+
+    alert("Filme cadastrado com sucesso... 👌")
+    navigate(-1);
+  }
+
   return (
     <Container>
       <Header />
 
       <Form>
         <header>
-          <ButtonText to="/"
+          <ButtonText
             icon={FiArrowLeft}
             title="voltar"
+            onClick={handleBack}
           />
 
           <h1>
@@ -51,15 +86,20 @@ export function CreateMovie() {
           <Input
             placeholder="Título"
             type="text"
+            onChange={e => setTitle(e.target.value)}
           />
 
           <Input
             placeholder="Sua nota (de 0 a 5)"
             type="number"
+            onChange={e => setRating(e.target.value)}
           />
         </div>
 
-        <Textarea placeholder="Observações" />
+        <Textarea
+          placeholder="Observações"
+          onChange={e => setObservation(e.target.value)}
+        />
 
         <Section title="Marcadores">
 
@@ -74,7 +114,6 @@ export function CreateMovie() {
               ))
             }
 
-
             <Markes
               isNew
               placeholder="Novo marcador"
@@ -86,8 +125,6 @@ export function CreateMovie() {
 
         </Section>
 
-
-
         <div className="buttons">
           <ButtonDelete
             title="Excluir filme"
@@ -95,6 +132,7 @@ export function CreateMovie() {
 
           <Button
             title="Salvar alterações"
+            onClick={handleNewMovie}
           />
         </div>
       </Form>
