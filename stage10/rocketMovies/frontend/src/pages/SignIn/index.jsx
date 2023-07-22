@@ -4,8 +4,8 @@ import { Background, ButtonCreateAccount, ButtonSignIn, Container, Form } from "
 
 import { useAuth } from '../../hooks/auth';
 
-import { FiMail } from "react-icons/fi"
-import { RiLockPasswordLine } from "react-icons/ri"
+import { FiMail } from "react-icons/fi";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 
 export function SignIn() {

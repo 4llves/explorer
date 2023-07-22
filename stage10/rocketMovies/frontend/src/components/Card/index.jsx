@@ -1,6 +1,6 @@
 import { Container, TagCard } from "./styled";
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
-import { Rating } from "../Rating"
+// import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import { Rating } from "../Rating";
 
 // const stars = [true, true, true, true, false]
 

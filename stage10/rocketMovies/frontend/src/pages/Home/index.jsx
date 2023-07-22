@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Container, Content, Top } from "./styles";
 
-import { IoMdAdd } from 'react-icons/io'
+import { IoMdAdd } from 'react-icons/io';
 import { Card } from "../../components/Card";
 
 import { api } from "../../services/api";

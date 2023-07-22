@@ -1,17 +1,17 @@
-import { ButtonDelete, Container, Form } from "./styles";
-import { Header } from '../../components/Header'
-import { ButtonText } from "../../components/ButtonText";
-import { Section } from "../../components/Section";
-import { FiArrowLeft } from "react-icons/fi";
-import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
-import { Textarea } from "../../components/Textarea";
-import { Markes } from "../../components/Markes";
 import { useState } from "react";
+import { FiArrowLeft } from "react-icons/fi";
+import { Button } from "../../components/Button";
+import { ButtonText } from "../../components/ButtonText";
+import { Header } from '../../components/Header';
+import { Input } from "../../components/Input";
+import { Markes } from "../../components/Markes";
+import { Section } from "../../components/Section";
+import { Textarea } from "../../components/Textarea";
+import { ButtonDelete, Container, Form } from "./styles";
 
 import { useNavigate } from "react-router-dom";
 
-import { api } from '../../services/api'
+import { api } from '../../services/api';
 
 export function CreateMovie() {
   const [title, setTitle] = useState("");
